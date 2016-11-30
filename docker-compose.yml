@@ -1,0 +1,45 @@
+version: '2'
+services:
+  saltmaster:
+    hostname: saltmaster
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      container: docker
+    command: /usr/sbin/init
+    build:
+      context: saltstack/master/
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./saltstack/salt:/srv/salt
+      - ./saltstack/pillar:/srv/pillar
+    networks:
+      - salt
+  minion1:
+    hostname: minion1
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      container: docker
+    command: /usr/sbin/init
+    build:
+      context: saltstack/minion1/
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - salt
+  minion2:
+    hostname: minion2
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      container: docker
+    command: /usr/sbin/init
+    build:
+      context: saltstack/minion2/
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - salt
+networks:
+  salt:
