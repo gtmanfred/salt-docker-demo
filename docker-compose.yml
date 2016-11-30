@@ -13,6 +13,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./saltstack/salt:/srv/salt
       - ./saltstack/pillar:/srv/pillar
+      - ./saltstack/master/run:/run
     networks:
       - salt
   minion1:
@@ -26,6 +27,7 @@ services:
       context: saltstack/minion1/
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./saltstack/minion1/run:/run
     networks:
       - salt
   minion2:
@@ -39,6 +41,7 @@ services:
       context: saltstack/minion2/
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./saltstack/minion2/run:/run
     networks:
       - salt
 networks:
