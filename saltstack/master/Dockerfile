@@ -22,3 +22,5 @@ ADD master_minion.pub /etc/salt/pki/minion/minion.pub
 ADD master_minion.pub /etc/salt/pki/minion/minion_master.pub
 ADD minion1.pub /etc/salt/pki/master/minions/minion1
 ADD minion2.pub /etc/salt/pki/master/minions/minion2
+
+RUN echo 'tmpfs /run tmpfs rw,nosuid,nodev,mode=755 0 0' >> /etc/fstab

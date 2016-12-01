@@ -2,6 +2,7 @@ version: '2'
 services:
   saltmaster:
     hostname: saltmaster
+    privileged: true
     cap_add:
       - SYS_ADMIN
     environment:
@@ -13,11 +14,11 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./saltstack/salt:/srv/salt
       - ./saltstack/pillar:/srv/pillar
-      - ./saltstack/master/run:/run
     networks:
       - salt
   minion1:
     hostname: minion1
+    privileged: true
     cap_add:
       - SYS_ADMIN
     environment:
@@ -27,11 +28,11 @@ services:
       context: saltstack/minion1/
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ./saltstack/minion1/run:/run
     networks:
       - salt
   minion2:
     hostname: minion2
+    privileged: true
     cap_add:
       - SYS_ADMIN
     environment:
@@ -41,7 +42,6 @@ services:
       context: saltstack/minion2/
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ./saltstack/minion2/run:/run
     networks:
       - salt
 networks:
