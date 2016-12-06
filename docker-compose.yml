@@ -16,8 +16,9 @@ services:
       - ./saltstack/pillar:/srv/pillar
     networks:
       - salt
-  minion1:
-    hostname: minion1
+    ports:
+      - 8000:8000
+  minion:
     privileged: true
     cap_add:
       - SYS_ADMIN
@@ -30,19 +31,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - salt
-  minion2:
-    hostname: minion2
-    privileged: true
-    cap_add:
-      - SYS_ADMIN
-    environment:
-      container: docker
-    command: /usr/sbin/init
-    build:
-      context: saltstack/minion2/
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    networks:
-      - salt
+    dns:
+      - 8.8.8.8
 networks:
   salt:

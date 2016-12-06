@@ -12,7 +12,13 @@ VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
 RUN curl -o /bootstrap -Ls https://bootstrap.saltstack.com
-RUN bash /bootstrap -MNPX -c /tmp
+RUN bash /bootstrap -MPX -c /tmp
+
+RUN yum install -y GitPython pyOpenSSL salt-api
+
+RUN systemctl disable salt-minion
+RUN salt-call --local tls.create_self_signed_cert
+RUN systemctl enable salt-api
 
 ADD master /etc/salt/master
 ADD master_minion.pem /etc/salt/pki/master.pem
