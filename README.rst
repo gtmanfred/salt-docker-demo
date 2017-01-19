@@ -31,4 +31,7 @@ using Salt.
 .. code-block:: bash
 
     docker-compose exec saltmaster bash
-    sudo salt \* test.ping
+	salt-key -Ay
+    salt \* test.ping
+	salt syndic\* cmd.run 'salt-key -Ay'
+	salt \* test.ping
