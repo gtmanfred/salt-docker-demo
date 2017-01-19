@@ -12,8 +12,9 @@ VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
 RUN curl -o /bootstrap -Ls https://bootstrap.saltstack.com
-RUN bash /bootstrap -SNPX -c /tmp
+RUN bash /bootstrap -SMNPX -c /tmp
 
-ADD syndic /etc/salt/master
+ADD master /etc/salt/master
+ADD minion /etc/salt/minion
 
 RUN echo 'tmpfs /run tmpfs rw,nosuid,nodev,mode=755 0 0' >> /etc/fstab

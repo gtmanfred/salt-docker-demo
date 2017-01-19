@@ -497,7 +497,6 @@ syndic_master: saltmaster
 # masters' syndic interfaces.
 # order_masters: False
 
-id: syndic1
 
 # If this master will be running a salt syndic daemon, syndic_master tells
 # this master where to receive commands from.
