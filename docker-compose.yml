@@ -16,8 +16,20 @@ services:
       - ./saltstack/pillar:/srv/pillar
     networks:
       - salt
+  syndic1:
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      container: docker
+    command: /usr/sbin/init
+    build:
+      context: saltstack/syndic1/
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - salt
   minion1:
-    hostname: minion1
     privileged: true
     cap_add:
       - SYS_ADMIN
@@ -31,7 +43,6 @@ services:
     networks:
       - salt
   minion2:
-    hostname: minion2
     privileged: true
     cap_add:
       - SYS_ADMIN

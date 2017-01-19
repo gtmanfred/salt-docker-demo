@@ -491,10 +491,13 @@
 # is a master that will be running a syndic daemon for passthrough the
 # "syndic_master" setting needs to be set to the location of the master server
 # to receive commands from.
+syndic_master: saltmaster
 
 # Set the order_masters setting to True if this master will command lower
 # masters' syndic interfaces.
-order_masters: True
+# order_masters: False
+
+id: syndic1
 
 # If this master will be running a salt syndic daemon, syndic_master tells
 # this master where to receive commands from.

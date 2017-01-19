@@ -14,7 +14,7 @@
 # Set the location of the salt master server. If the master server cannot be
 # resolved, then the minion will fail to start.
 #master: salt
-master: saltmaster
+master: syndic1
 
 # If multiple masters are specified in the 'master' setting, the default behavior
 # is to always try to connect to them in the order they are listed. If random_master is
@@ -53,7 +53,6 @@ master: saltmaster
 # same machine but with different ids, this can be useful for salt compute
 # clusters.
 #id:
-id: minion2
 
 # Append a domain to a hostname in the event that it does not exist.  This is
 # useful for systems where socket.getfqdn() does not actually result in a
