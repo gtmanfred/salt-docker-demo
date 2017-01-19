@@ -29,6 +29,19 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - salt
+  syndic2:
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      container: docker
+    command: /usr/sbin/init
+    build:
+      context: saltstack/syndic2/
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    networks:
+      - salt
   minion1:
     privileged: true
     cap_add:
