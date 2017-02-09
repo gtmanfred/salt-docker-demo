@@ -26,7 +26,7 @@ services:
       container: docker
     command: /usr/sbin/init
     build:
-      context: saltstack/minion1/
+      context: saltstack/minion/
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
