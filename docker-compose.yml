@@ -44,5 +44,10 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - salt
+  consul:
+    privileged: true
+    image: consul
+    networks:
+      - salt
 networks:
   salt:

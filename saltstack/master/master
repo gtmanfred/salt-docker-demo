@@ -641,3 +641,14 @@
 # List of git repositories to include with the local repo:
 #win_gitrepos:
 #  - 'https://github.com/saltstack/salt-winrepo.git'
+
+cache: consul
+consul.host: 127.0.0.1
+consul.port: 8500
+consul.token: None
+consul.scheme: http
+consul.consistency: default
+consul.dc: dc1
+consul.verify: True
+
+log_level: debug
