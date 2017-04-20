@@ -1,7 +1,7 @@
 FROM centos/systemd
 
 RUN yum install -y epel-release || true
-RUN yum install -y python-pip python-devel gcc git || true
+RUN yum install -y python-pip python-devel gcc git systemd-python || true
 RUN pip install -e git+git://github.com/gtmanfred/salt.git@develop#egg=salt
 RUN cp -a /src/salt/pkg/*.service /etc/systemd/system/
 RUN systemctl enable salt-master.service
