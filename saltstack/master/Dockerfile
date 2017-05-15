@@ -3,7 +3,7 @@ FROM centos/systemd
 RUN yum clean all
 RUN yum install -y epel-release; \
     yum install -y python2-pip python-devel gcc git systemd-python; \
-    pip install -e git+git://github.com/saltstack/salt.git@2016.11#egg=salt; \
+    pip install -e git+git://github.com/saltstack/salt.git@v2016.11.3#egg=salt; \
     cp -a src/salt/pkg/salt-master.service /etc/systemd/system/; \
     systemctl enable salt-master
 
