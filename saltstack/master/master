@@ -643,7 +643,7 @@
 #  - 'https://github.com/saltstack/salt-winrepo.git'
 
 cache: consul
-consul.host: 127.0.0.1
+consul.host: consul
 consul.port: 8500
 consul.token: None
 consul.scheme: http
