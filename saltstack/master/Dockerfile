@@ -12,7 +12,13 @@ VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
 RUN curl -o /bootstrap -Ls https://bootstrap.saltstack.com
-RUN bash /bootstrap -MNPX -c /tmp
+RUN bash /bootstrap -MNPX -p salt-api -c /tmp
+
+RUN useradd -m saltdev
+RUN echo saltdev | passwd --stdin saltdev
+RUN yum install -y pyOpenSSL
+RUN salt-run salt.cmd tls.create_self_signed_cert
+RUN systemctl enable salt-api.service
 
 ADD master /etc/salt/master
 
