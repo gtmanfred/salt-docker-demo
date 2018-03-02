@@ -10,6 +10,8 @@ services:
     command: /usr/sbin/init
     build:
       context: saltstack/master/
+    ports:
+      - "8000:8000"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./saltstack/salt:/srv/salt
