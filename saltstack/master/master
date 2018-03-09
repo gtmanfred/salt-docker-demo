@@ -6,3 +6,7 @@ external_auth:
   pam:
     saltdev:
       - .*
+      - '@runner'
+      - '@wheel'
+      - '@jobs'
+log_level: debug
