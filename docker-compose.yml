@@ -1,7 +1,7 @@
 version: '2'
 services:
-  saltmaster:
-    hostname: saltmaster
+  salt:
+    hostname: salt
     privileged: true
     cap_add:
       - SYS_ADMIN
