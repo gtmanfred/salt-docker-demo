@@ -30,5 +30,5 @@ using Salt.
 
 .. code-block:: bash
 
-    docker-compose exec saltmaster bash
-    sudo salt \* test.ping
+    docker-compose exec salt bash
+    salt \* test.ping
