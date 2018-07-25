@@ -5,8 +5,18 @@ rest_cherrypy:
 external_auth:
   pam:
     saltdev:
-      - .*
-      - '@runner'
-      - '@wheel'
-      - '@jobs'
+    - .*
+    - '@runner'
+    - '@wheel'
+    - '@jobs'
 log_level: debug
+vault:
+  url: http://vault:8200
+  auth:
+    method: token
+    token: mysecret
+  policies:
+  - myp
+peer_run:
+  .*:
+  - vault.generate_token

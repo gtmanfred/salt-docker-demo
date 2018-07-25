@@ -46,5 +46,16 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - salt
+  vault:
+    image: vault:0.9.6
+    ports:
+    - "8200:8200"
+    cap_add:
+    - IPC_LOCK
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: mysecret
+      VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}'
+    networks:
+      - salt
 networks:
   salt:
